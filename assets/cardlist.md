@@ -1,14 +1,4 @@
-### RED CARDS
-| Card ID | Card Name | Card Description | Attack | Defense | Cost |
-|---------|-----------|------------------|--------|---------|------|
-|001|Testing Card|This is a test card|0|0|2|
-|002|Another Test|This is another test card|0|0|3|
-
-
-### BLUE CARDS
-
-
-
-### GREEN CARDS
-
-
+### Card List
+| Card ID | Card Color | Card Name | Card Description | Attack | Defense | Cost |
+|---------|------------|-----------|------------------|--------|---------|------|
+|001|**RED**|Test Card|This is a card for table testing|2|1|3|
