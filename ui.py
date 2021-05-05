@@ -2,7 +2,7 @@
 
 import pygame
 
-boardImage = pygame.image.load('assets/ui/board.png')
+boardImage = pygame.image.load('assets/ui/board2.png')
 
 def drawBoard(surface):
     surface.blit(boardImage, (0, 0))
