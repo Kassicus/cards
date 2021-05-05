@@ -1,3 +1,5 @@
+#Copyright (c) 2021 Kason Suchow
+
 import pygame
 
 boardImage = pygame.image.load('assets/ui/board.png')
@@ -124,7 +126,17 @@ class MeditationCounter:
         self.pos = (self.x, self.y)
 
         self.images = {
-        'zero': pygame.transform.scale(pygame.image.load('assets/ui/mc_zero.png'), (42, 42))
+        'zero': pygame.transform.scale(pygame.image.load('assets/ui/mc_zero.png'), (42, 42)),
+        'one': pygame.transform.scale(pygame.image.load('assets/ui/mc_one.png'), (42, 42)),
+        'two': pygame.transform.scale(pygame.image.load('assets/ui/mc_two.png'), (42, 42)),
+        'three': pygame.transform.scale(pygame.image.load('assets/ui/mc_three.png'), (42, 42)),
+        'four': pygame.transform.scale(pygame.image.load('assets/ui/mc_four.png'), (42, 42)),
+        'five': pygame.transform.scale(pygame.image.load('assets/ui/mc_five.png'), (42, 42)),
+        'six': pygame.transform.scale(pygame.image.load('assets/ui/mc_six.png'), (42, 42)),
+        'seven': pygame.transform.scale(pygame.image.load('assets/ui/mc_seven.png'), (42, 42)),
+        'eight': pygame.transform.scale(pygame.image.load('assets/ui/mc_eight.png'), (42, 42)),
+        'nine': pygame.transform.scale(pygame.image.load('assets/ui/mc_nine.png'), (42, 42)),
+        'ten': pygame.transform.scale(pygame.image.load('assets/ui/mc_ten.png'), (42, 42)),
         }
 
         self.image = self.images['zero']
@@ -132,5 +144,26 @@ class MeditationCounter:
     def draw(self, surface):
         surface.blit(self.image, self.pos)
 
-    def update(self):
-        pass
+    def update(self, mps):
+        if mps == 0:
+            self.image = self.images['zero']
+        if mps == 1:
+            self.image = self.images['one']
+        if mps == 2:
+            self.image = self.images['two']
+        if mps == 3:
+            self.image = self.images['three']
+        if mps == 4:
+            self.image = self.images['four']
+        if mps == 5:
+            self.image = self.images['five']
+        if mps == 6:
+            self.image = self.images['six']
+        if mps == 7:
+            self.image = self.images['seven']
+        if mps == 8:
+            self.image = self.images['eight']
+        if mps == 9:
+            self.image = self.images['nine']
+        if mps == 10:
+            self.image = self.images['ten']

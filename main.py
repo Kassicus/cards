@@ -1,3 +1,5 @@
+#Copyright (c) 2021 Kason Suchow
+
 import pygame
 import colors
 import cards
@@ -25,16 +27,17 @@ class Game:
         self.blueMana = 0
         self.greenMana = 0
 
+        self.meditationPoints = 4
+
         self.cards = {
-        'back': cards.Card(18, 270, pygame.image.load('assets/back.png')),
-        'red': cards.Card(200, 100, pygame.image.load('assets/red_example.png'))
+        'test': cards.library['001']
         }
 
-        self.greenManaCounter = ui.ManaCounter(925, 530)
-        self.redManaCounter = ui.ManaCounter(903, 628)
-        self.blueManaCounter = ui.ManaCounter(948, 628)
+        self.greenManaCounter = ui.ManaCounter(925, 410)
+        self.redManaCounter = ui.ManaCounter(903, 508)
+        self.blueManaCounter = ui.ManaCounter(948, 508)
 
-        self.meditatioCounter = ui.MeditationCounter(923, 728)
+        self.meditatioCounter = ui.MeditationCounter(923, 608)
 
     def start(self):
         while self.running:
@@ -70,7 +73,7 @@ class Game:
         self.redManaCounter.update(self.redMana, 'red')
         self.blueManaCounter.update(self.blueMana, 'blue')
 
-        self.meditatioCounter.update()
+        self.meditatioCounter.update(self.meditationPoints)
 
         pygame.display.update()
         self.clock.tick(30)
