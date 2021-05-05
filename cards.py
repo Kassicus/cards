@@ -25,5 +25,5 @@ class Card:
         pass
 
 library = {
-'001': Card(pygame.image.load('assets/back.png'), 'red', "Test Card", "This is a card for table testing", 2, 1, 3)
+'001': Card(pygame.image.load('assets/cards/back.png'), 'red', "Test Card", "This is a card for table testing", 2, 1, 3)
 }
