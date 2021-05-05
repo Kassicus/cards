@@ -62,9 +62,6 @@ class Card:
 
                             self.remove = True
 
-    def drawCard(self, player):
-        pass
-
     def checkHover(self):
         pos = pygame.mouse.get_pos()
 

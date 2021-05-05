@@ -13,7 +13,7 @@ class PlayerOne:
         ]
 
         self.hand = []
-
+        self.graveyard = []
         self.discard = []
 
         self.redMana = data.playerOneRedMana
@@ -44,6 +44,9 @@ class PlayerOne:
         for card in range(len(self.hand)):
             self.hand[card].draw(surface)
 
+        for card in range(len(self.graveyard)):
+            self.graveyard[card].draw(surface)
+
     def update(self):
         self.redMana = data.playerOneRedMana
         self.blueMana = data.playerOneBlueMana
@@ -60,10 +63,20 @@ class PlayerOne:
             self.deck[card].update()
 
         for card in range(len(self.hand)):
-            self.hand[card].update()
+            try:
+                self.hand[card].update()
 
-            if self.hand[card].remove:
-                self.hand.pop(card)
+                if self.hand[card].remove:
+                    self.graveyard.append(self.hand[card])
+                    self.hand.pop(card)
+
+                    for card in range(len(self.graveyard)):
+                        self.graveyard[card].x = 801
+            except:
+                pass
+
+        for card in range(len(self.graveyard)):
+            self.graveyard[card].update()
 
     def drawCard(self):
         if len(self.deck) > 0:
