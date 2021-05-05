@@ -5,6 +5,8 @@ import ui
 
 pygame.init()
 
+iconImage = pygame.image.load('assets/window/icon.png')
+
 class Game:
     def __init__(self, width, height, title):
         self.width = width
@@ -13,6 +15,7 @@ class Game:
 
         self.screen = pygame.display.set_mode([self.width, self.height])
         pygame.display.set_caption(self.title)
+        pygame.display.set_icon(iconImage)
 
         self.running = True
         self.clock = pygame.time.Clock()
@@ -27,11 +30,11 @@ class Game:
         'red': cards.Card(200, 100, pygame.image.load('assets/red_example.png'))
         }
 
-        self.greenManaCounter = ui.ManaCounter(910, 530)
-        self.redManaCounter = ui.ManaCounter(887, 628)
-        self.blueManaCounter = ui.ManaCounter(933, 628)
+        self.greenManaCounter = ui.ManaCounter(925, 530)
+        self.redManaCounter = ui.ManaCounter(903, 628)
+        self.blueManaCounter = ui.ManaCounter(948, 628)
 
-        self.meditatioCounter = ui.MeditationCounter(908, 728)
+        self.meditatioCounter = ui.MeditationCounter(923, 728)
 
     def start(self):
         while self.running:
