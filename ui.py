@@ -1,5 +1,10 @@
 import pygame
 
+boardImage = pygame.image.load('assets/ui/board.png')
+
+def drawBoard(surface):
+    surface.blit(boardImage, (0, 0))
+
 class ManaCounter:
     def __init__(self, x, y):
         self.x = x
@@ -8,16 +13,108 @@ class ManaCounter:
         self.pos = (self.x, self.y)
 
         self.images = {
-        'base': pygame.image.load('assets/ui/mana_crystal.png')
+        'zero': pygame.transform.scale(pygame.image.load('assets/ui/mana_crystal.png'), (38, 106)),
+        'red_1': pygame.transform.scale(pygame.image.load('assets/ui/red_mana_1.png'), (38, 106)),
+        'red_2': pygame.transform.scale(pygame.image.load('assets/ui/red_mana_2.png'), (38, 106)),
+        'red_3': pygame.transform.scale(pygame.image.load('assets/ui/red_mana_3.png'), (38, 106)),
+        'red_4': pygame.transform.scale(pygame.image.load('assets/ui/red_mana_4.png'), (38, 106)),
+        'red_5': pygame.transform.scale(pygame.image.load('assets/ui/red_mana_5.png'), (38, 106)),
+        'red_6': pygame.transform.scale(pygame.image.load('assets/ui/red_mana_6.png'), (38, 106)),
+        'red_7': pygame.transform.scale(pygame.image.load('assets/ui/red_mana_7.png'), (38, 106)),
+        'red_8': pygame.transform.scale(pygame.image.load('assets/ui/red_mana_8.png'), (38, 106)),
+        'red_9': pygame.transform.scale(pygame.image.load('assets/ui/red_mana_9.png'), (38, 106)),
+        'red_10': pygame.transform.scale(pygame.image.load('assets/ui/red_mana_10.png'), (38, 106)),
+        'blue_1': pygame.transform.scale(pygame.image.load('assets/ui/blue_mana_1.png'), (38, 106)),
+        'blue_2': pygame.transform.scale(pygame.image.load('assets/ui/blue_mana_2.png'), (38, 106)),
+        'blue_3': pygame.transform.scale(pygame.image.load('assets/ui/blue_mana_3.png'), (38, 106)),
+        'blue_4': pygame.transform.scale(pygame.image.load('assets/ui/blue_mana_4.png'), (38, 106)),
+        'blue_5': pygame.transform.scale(pygame.image.load('assets/ui/blue_mana_5.png'), (38, 106)),
+        'blue_6': pygame.transform.scale(pygame.image.load('assets/ui/blue_mana_6.png'), (38, 106)),
+        'blue_7': pygame.transform.scale(pygame.image.load('assets/ui/blue_mana_7.png'), (38, 106)),
+        'blue_8': pygame.transform.scale(pygame.image.load('assets/ui/blue_mana_8.png'), (38, 106)),
+        'blue_9': pygame.transform.scale(pygame.image.load('assets/ui/blue_mana_9.png'), (38, 106)),
+        'blue_10': pygame.transform.scale(pygame.image.load('assets/ui/blue_mana_10.png'), (38, 106)),
+        'green_1': pygame.transform.scale(pygame.image.load('assets/ui/green_mana_1.png'), (38, 106)),
+        'green_2': pygame.transform.scale(pygame.image.load('assets/ui/green_mana_2.png'), (38, 106)),
+        'green_3': pygame.transform.scale(pygame.image.load('assets/ui/green_mana_3.png'), (38, 106)),
+        'green_4': pygame.transform.scale(pygame.image.load('assets/ui/green_mana_4.png'), (38, 106)),
+        'green_5': pygame.transform.scale(pygame.image.load('assets/ui/green_mana_5.png'), (38, 106)),
+        'green_6': pygame.transform.scale(pygame.image.load('assets/ui/green_mana_6.png'), (38, 106)),
+        'green_7': pygame.transform.scale(pygame.image.load('assets/ui/green_mana_7.png'), (38, 106)),
+        'green_8': pygame.transform.scale(pygame.image.load('assets/ui/green_mana_8.png'), (38, 106)),
+        'green_9': pygame.transform.scale(pygame.image.load('assets/ui/green_mana_9.png'), (38, 106)),
+        'green_10': pygame.transform.scale(pygame.image.load('assets/ui/green_mana_10.png'), (38, 106)),
         }
 
-        self.image = pygame.transform.scale(self.images['base'], (38, 106))
+        self.image = self.images['zero']
 
     def draw(self, surface):
         surface.blit(self.image, self.pos)
 
-    def update(self):
-        pass
+    def update(self, mana, key):
+        if key == 'red':
+            if mana == 1:
+                self.image = self.images['red_1']
+            if mana == 2:
+                self.image = self.images['red_2']
+            if mana == 3:
+                self.image = self.images['red_3']
+            if mana == 4:
+                self.image = self.images['red_4']
+            if mana == 5:
+                self.image = self.images['red_5']
+            if mana == 6:
+                self.image = self.images['red_6']
+            if mana == 7:
+                self.image = self.images['red_7']
+            if mana == 8:
+                self.image = self.images['red_8']
+            if mana == 9:
+                self.image = self.images['red_9']
+            if mana == 10:
+                self.image = self.images['red_10']
+        if key == 'blue':
+            if mana == 1:
+                self.image = self.images['blue_1']
+            if mana == 2:
+                self.image = self.images['blue_2']
+            if mana == 3:
+                self.image = self.images['blue_3']
+            if mana == 4:
+                self.image = self.images['blue_4']
+            if mana == 5:
+                self.image = self.images['blue_5']
+            if mana == 6:
+                self.image = self.images['blue_6']
+            if mana == 7:
+                self.image = self.images['blue_7']
+            if mana == 8:
+                self.image = self.images['blue_8']
+            if mana == 9:
+                self.image = self.images['blue_9']
+            if mana == 10:
+                self.image = self.images['blue_10']
+        if key == 'green':
+            if mana == 1:
+                self.image = self.images['green_1']
+            if mana == 2:
+                self.image = self.images['green_2']
+            if mana == 3:
+                self.image = self.images['green_3']
+            if mana == 4:
+                self.image = self.images['green_4']
+            if mana == 5:
+                self.image = self.images['green_5']
+            if mana == 6:
+                self.image = self.images['green_6']
+            if mana == 7:
+                self.image = self.images['green_7']
+            if mana == 8:
+                self.image = self.images['green_8']
+            if mana == 9:
+                self.image = self.images['green_9']
+            if mana == 10:
+                self.image = self.images['green_10']
 
 class MeditationCounter:
     def __init__(self, x, y):
@@ -27,10 +124,10 @@ class MeditationCounter:
         self.pos = (self.x, self.y)
 
         self.images = {
-        'zero': pygame.image.load('assets/ui/mc_zero.png')
+        'zero': pygame.transform.scale(pygame.image.load('assets/ui/mc_zero.png'), (42, 42))
         }
 
-        self.image = pygame.transform.scale(self.images['zero'], (42, 42))
+        self.image = self.images['zero']
 
     def draw(self, surface):
         surface.blit(self.image, self.pos)

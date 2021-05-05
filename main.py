@@ -18,8 +18,12 @@ class Game:
         self.clock = pygame.time.Clock()
         self.events = pygame.event.get()
 
+        self.redMana = 0
+        self.blueMana = 0
+        self.greenMana = 0
+
         self.cards = {
-        'back': cards.Card(100, 100, pygame.image.load('assets/back.png')),
+        'back': cards.Card(18, 270, pygame.image.load('assets/back.png')),
         'red': cards.Card(200, 100, pygame.image.load('assets/red_example.png'))
         }
 
@@ -44,6 +48,8 @@ class Game:
     def draw(self):
         self.screen.fill(colors.BACKGROUND)
 
+        ui.drawBoard(self.screen)
+
         for card in self.cards:
             self.cards[card].draw(self.screen)
 
@@ -57,9 +63,9 @@ class Game:
         for card in self.cards:
             self.cards[card].update()
 
-        self.greenManaCounter.update()
-        self.redManaCounter.update()
-        self.blueManaCounter.update()
+        self.greenManaCounter.update(self.greenMana, 'green')
+        self.redManaCounter.update(self.redMana, 'red')
+        self.blueManaCounter.update(self.blueMana, 'blue')
 
         self.meditatioCounter.update()
 
