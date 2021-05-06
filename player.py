@@ -1,5 +1,6 @@
 #Copyright (c) 2021 Kason Suchow
 
+import random
 import ui
 import cards
 import data
@@ -9,7 +10,8 @@ class PlayerOne:
         self.deck = [
         cards.library['001'],
         cards.library['002'],
-        cards.library['003']
+        cards.library['003'],
+        cards.library['004']
         ]
 
         self.hand = []
@@ -30,6 +32,8 @@ class PlayerOne:
         for card in range(len(self.deck)):
             self.deck[card].x = 18
             self.deck[card].y = 670
+
+        self.shuffleDeck()
 
     def draw(self, surface):
         self.greenManaCounter.draw(surface)
@@ -72,6 +76,8 @@ class PlayerOne:
 
                     for card in range(len(self.graveyard)):
                         self.graveyard[card].x = 801
+
+                    self.reorderHand()
             except:
                 pass
 
@@ -83,9 +89,15 @@ class PlayerOne:
             self.hand.append(self.deck[0])
             self.deck.pop(0)
 
+            self.reorderHand()
+
+    def reorderHand(self):
         for card in range(len(self.hand)):
             self.hand[card].x = int(120 + (card * 90))
             self.hand[card].faceUp = True
+
+    def shuffleDeck(self):
+        random.shuffle(self.deck)
 
 class PlayerTwo:
     def __init__(self):

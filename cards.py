@@ -79,4 +79,5 @@ library = {
 '001': Card(-500, -500, 'assets/cards/green/mana.png', 'green', 'test', 'test', 0, 1, 1, 'mana'),
 '002': Card(-500, -500, 'assets/cards/blue/mana.png', 'blue', 'test', 'test', 0, 1, 1, 'mana'),
 '003': Card(-500, -500, 'assets/cards/red/mana.png', 'red', 'test', 'test', 0, 1, 1, 'mana'),
+'004': Card(-500, -500, 'assets/cards/red/mana.png', 'red', 'test', 'test', 0, 1, 1, 'mana'),
 }
