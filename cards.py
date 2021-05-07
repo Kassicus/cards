@@ -48,19 +48,19 @@ class Card:
         if self.type == 'mana':
             if self.faceUp:
                 if self.hovered:
-                    if pygame.mouse.get_pressed()[0]:
-                        print('click!')
-                        if data.playerOneMP >= self.cost:
-                            data.playerOneMP -= self.cost
+                    for event in data.events:
+                        if event.type == pygame.MOUSEBUTTONDOWN:
+                            if data.playerOneMP >= self.cost:
+                                data.playerOneMP -= self.cost
 
-                            if self.color == 'red':
-                                data.playerOneRedMana += 3
-                            elif self.color == 'green':
-                                data.playerOneGreenMana += 3
-                            elif self.color == 'blue':
-                                data.playerOneBlueMana += 3
+                                if self.color == 'red':
+                                    data.playerOneRedMana += 3
+                                elif self.color == 'green':
+                                    data.playerOneGreenMana += 3
+                                elif self.color == 'blue':
+                                    data.playerOneBlueMana += 3
 
-                            self.remove = True
+                                self.remove = True
 
     def checkHover(self):
         pos = pygame.mouse.get_pos()

@@ -5,6 +5,7 @@ import colors
 import cards
 import ui
 import player
+import data
 
 pygame.init()
 
@@ -22,16 +23,16 @@ class Game:
 
         self.running = True
         self.clock = pygame.time.Clock()
-        self.events = pygame.event.get()
+        data.events = pygame.event.get()
 
         self.playerOne = player.PlayerOne()
         self.playerTwo = player.PlayerTwo()
 
     def start(self):
         while self.running:
-            self.events = pygame.event.get()
+            data.events = pygame.event.get()
 
-            for event in self.events:
+            for event in data.events:
                 if event.type == pygame.QUIT:
                     self.running = False
 

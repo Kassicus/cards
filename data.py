@@ -9,3 +9,5 @@ playerTwoRedMana = 0
 playerTwoBlueMana = 0
 playerTwoGreenMana = 0
 playerTwoMP = 1
+
+events = None
