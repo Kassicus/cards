@@ -15,6 +15,8 @@ class PlayerOne:
         ]
 
         self.hand = []
+        self.attackers = []
+        self.defenders = []
         self.graveyard = []
         self.discard = []
 
@@ -29,9 +31,10 @@ class PlayerOne:
 
         self.meditationCounter = ui.MeditationCounter(923, 608)
 
-        for card in range(len(self.deck)):
-            self.deck[card].x = 18
-            self.deck[card].y = 670
+        for c in range(len(self.deck)):
+            card = self.deck[c]
+            card.x = 18
+            card.y = 670
 
         self.shuffleDeck()
 
@@ -42,14 +45,21 @@ class PlayerOne:
 
         self.meditationCounter.draw(surface)
 
-        for card in range(len(self.deck)):
-            self.deck[card].draw(surface)
+        for c in range(len(self.deck)):
+            card = self.deck[c]
+            card.draw(surface)
 
-        for card in range(len(self.hand)):
-            self.hand[card].draw(surface)
+        for c in range(len(self.hand)):
+            card = self.hand[c]
+            card.draw(surface)
 
-        for card in range(len(self.graveyard)):
-            self.graveyard[card].draw(surface)
+        for c in range(len(self.graveyard)):
+            card = self.graveyard[c]
+            card.draw(surface)
+
+        for c in range(len(self.defenders)):
+            card = self.defenders[c]
+            card.draw(surface)
 
     def update(self):
         self.redMana = data.playerOneRedMana
@@ -63,26 +73,39 @@ class PlayerOne:
 
         self.meditationCounter.update(self.meditationPoints)
 
-        for card in range(len(self.deck)):
-            self.deck[card].update()
+        for c in range(len(self.deck)):
+            card = self.deck[c]
+            card.update()
 
-        for card in range(len(self.hand)):
+        for c in range(len(self.hand)):
             try:
-                self.hand[card].update()
+                card = self.hand[c]
+                card.update()
+                card.checkPlayed()
 
-                if self.hand[card].remove:
-                    self.graveyard.append(self.hand[card])
-                    self.hand.pop(card)
+                if card.played:
+                    if card.type == 'defender':
+                        self.defenders.append(card)
+                        self.hand.pop(c)
 
-                    for card in range(len(self.graveyard)):
-                        self.graveyard[card].x = 801
+                        self.reorderHand()
+                        self.reorderDefenders()
+
+                if card.remove:
+                    self.graveyard.append(card)
+                    self.hand.pop(c)
+
+                    for c in range(len(self.graveyard)):
+                        card = self.graveyard[c]
+                        card.x = 801
 
                     self.reorderHand()
             except:
                 pass
 
-        for card in range(len(self.graveyard)):
-            self.graveyard[card].update()
+        for c in range(len(self.graveyard)):
+            card = self.graveyard[c]
+            card.update()
 
     def drawCard(self):
         if len(self.deck) > 0:
@@ -91,10 +114,18 @@ class PlayerOne:
 
             self.reorderHand()
 
+    def reorderDefenders(self):
+        for c in range(len(self.defenders)):
+            card = self.defenders[c]
+            card.x = int(17 + (c * 90))
+            card.y = 550
+            card.faceUp = True
+
     def reorderHand(self):
-        for card in range(len(self.hand)):
-            self.hand[card].x = int(120 + (card * 90))
-            self.hand[card].faceUp = True
+        for c in range(len(self.hand)):
+            card = self.hand[c]
+            card.x = int(120 + (c * 90))
+            card.faceUp = True
 
     def shuffleDeck(self):
         random.shuffle(self.deck)

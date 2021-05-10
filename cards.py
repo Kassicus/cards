@@ -24,6 +24,7 @@ class BaseCard(object):
         self.remove = False
         self.hovered = False
         self.faceUp = False
+        self.played = False
 
         self.face = None
         self.back = pygame.transform.scale(pygame.image.load('assets/cards/back.png'), (80, 112))
@@ -69,6 +70,19 @@ class BaseCard(object):
                         data.playerOneBlueMana += 3
 
                     self.remove = True
+
+    def checkPlayed(self):
+        for event in data.events:
+            if self.hovered and event.type == pygame.MOUSEBUTTONDOWN:
+                """if self.color == 'red':
+                    pass
+                elif self.color == 'green':
+                    if data.playerOneGreenMana >= self.cost:
+                        data.playerOneGreenMane -= self.cost
+                        self.played = True"""
+
+                self.played = True
+
 
 class RedMana(BaseCard):
     def __init__(self):
@@ -121,9 +135,26 @@ class GreenMana(BaseCard):
 
         self.face = pygame.transform.scale(pygame.image.load('assets/cards/green/mana.png'), (80, 112))
 
+class Turtle(BaseCard):
+    def __init__(self):
+        super().__init__()
+
+        self.color = 'green'
+
+        self.name = 'Turtle'
+        self.description = 'A Big Boi Defender'
+
+        self.attack = 1
+        self.defense = 4
+        self.cost = 2
+
+        self.type = 'defender'
+
+        self.face = pygame.transform.scale(pygame.image.load('assets/cards/green/turtle.png'), (80, 112))
+
 library = {
 '001': RedMana(),
 '002': BlueMana(),
 '003': GreenMana(),
-'004': RedMana(),
+'004': Turtle(),
 }

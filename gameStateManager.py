@@ -1,3 +1,5 @@
+#Copyright (c) 2021 Kason Suchow
+
 gameStates = ['draw', 'play', 'fight', 'end', 'pass']
 
 gameState = gameStates[0]
