@@ -1,10 +1,10 @@
 #Copyright (c) 2021 Kason Suchow
 
 import pygame
-import imageHandler
+import imageManager
 
 def drawBoard(surface):
-    surface.blit(imageHandler.board, (0, 0))
+    surface.blit(imageManager.board, (0, 0))
 
 class ManaCounter():
     def __init__(self, x, y, color):
@@ -16,45 +16,45 @@ class ManaCounter():
         self.color = color
 
         self.redImages = [
-        imageHandler.manaCrystal,
-        imageHandler.redManaCrystalOne,
-        imageHandler.redManaCrystalTwo,
-        imageHandler.redManaCrystalThree,
-        imageHandler.redManaCrystalFour,
-        imageHandler.redManaCrystalFive,
-        imageHandler.redManaCrystalSix,
-        imageHandler.redManaCrystalSeven,
-        imageHandler.redManaCrystalEight,
-        imageHandler.redManaCrystalNine,
-        imageHandler.redManaCrystalTen
+        imageManager.manaCrystal,
+        imageManager.redManaCrystalOne,
+        imageManager.redManaCrystalTwo,
+        imageManager.redManaCrystalThree,
+        imageManager.redManaCrystalFour,
+        imageManager.redManaCrystalFive,
+        imageManager.redManaCrystalSix,
+        imageManager.redManaCrystalSeven,
+        imageManager.redManaCrystalEight,
+        imageManager.redManaCrystalNine,
+        imageManager.redManaCrystalTen
         ]
 
         self.blueImages = [
-        imageHandler.manaCrystal,
-        imageHandler.blueManaCrystalOne,
-        imageHandler.blueManaCrystalTwo,
-        imageHandler.blueManaCrystalThree,
-        imageHandler.blueManaCrystalFour,
-        imageHandler.blueManaCrystalFive,
-        imageHandler.blueManaCrystalSix,
-        imageHandler.blueManaCrystalSeven,
-        imageHandler.blueManaCrystalEight,
-        imageHandler.blueManaCrystalNine,
-        imageHandler.blueManaCrystalTen
+        imageManager.manaCrystal,
+        imageManager.blueManaCrystalOne,
+        imageManager.blueManaCrystalTwo,
+        imageManager.blueManaCrystalThree,
+        imageManager.blueManaCrystalFour,
+        imageManager.blueManaCrystalFive,
+        imageManager.blueManaCrystalSix,
+        imageManager.blueManaCrystalSeven,
+        imageManager.blueManaCrystalEight,
+        imageManager.blueManaCrystalNine,
+        imageManager.blueManaCrystalTen
         ]
 
         self.greenImages = [
-        imageHandler.manaCrystal,
-        imageHandler.greenManaCrystalOne,
-        imageHandler.greenManaCrystalTwo,
-        imageHandler.greenManaCrystalThree,
-        imageHandler.greenManaCrystalFour,
-        imageHandler.greenManaCrystalFive,
-        imageHandler.greenManaCrystalSix,
-        imageHandler.greenManaCrystalSeven,
-        imageHandler.greenManaCrystalEight,
-        imageHandler.greenManaCrystalNine,
-        imageHandler.greenManaCrystalTen
+        imageManager.manaCrystal,
+        imageManager.greenManaCrystalOne,
+        imageManager.greenManaCrystalTwo,
+        imageManager.greenManaCrystalThree,
+        imageManager.greenManaCrystalFour,
+        imageManager.greenManaCrystalFive,
+        imageManager.greenManaCrystalSix,
+        imageManager.greenManaCrystalSeven,
+        imageManager.greenManaCrystalEight,
+        imageManager.greenManaCrystalNine,
+        imageManager.greenManaCrystalTen
         ]
 
         self.image = self.redImages[0]
@@ -78,17 +78,17 @@ class MeditationCounter():
         self.pos = (self.x, self.y)
 
         self.images = [
-        imageHandler.meditationCounterZero,
-        imageHandler.meditationCounterOne,
-        imageHandler.meditationCounterTwo,
-        imageHandler.meditationCounterThree,
-        imageHandler.meditationCounterFour,
-        imageHandler.meditationCounterFive,
-        imageHandler.meditationCounterSix,
-        imageHandler.meditationCounterSeven,
-        imageHandler.meditationCounterEight,
-        imageHandler.meditationCounterNine,
-        imageHandler.meditationCounterTen,
+        imageManager.meditationCounterZero,
+        imageManager.meditationCounterOne,
+        imageManager.meditationCounterTwo,
+        imageManager.meditationCounterThree,
+        imageManager.meditationCounterFour,
+        imageManager.meditationCounterFive,
+        imageManager.meditationCounterSix,
+        imageManager.meditationCounterSeven,
+        imageManager.meditationCounterEight,
+        imageManager.meditationCounterNine,
+        imageManager.meditationCounterTen,
         ]
 
         self.image = self.images[0]

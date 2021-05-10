@@ -1,7 +1,7 @@
 #Copyright (c) 2021 Kason Suchow
 
 import pygame
-import imageHandler
+import imageManager
 import data
 import playerManager
 import ui
@@ -16,7 +16,7 @@ class Game:
 
         self.screen = pygame.display.set_mode([self.width, self.height])
         pygame.display.set_caption(self.title)
-        pygame.display.set_icon(imageHandler.icon)
+        pygame.display.set_icon(imageManager.icon)
 
         self.running = True
         self.clock = pygame.time.Clock()
