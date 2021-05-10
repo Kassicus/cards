@@ -2,6 +2,7 @@
 
 import pygame
 import imageManager
+import data
 
 class BaseCard(object):
     def __init__(self):
@@ -25,6 +26,9 @@ class BaseCard(object):
         self.back = imageManager.cardBack
 
         self.faceUp = False
+        self.hovered = False
+        self.clicked = True
+        self.remove = False
 
         self.image = self.back
 
@@ -38,6 +42,28 @@ class BaseCard(object):
             self.image = self.face
         else:
             self.image = self.back
+
+        self.checkHovered()
+
+    def checkHovered(self):
+        mousePos = pygame.mouse.get_pos()
+
+        if self.x <= mousePos[0] <= self.x + 80:
+            if self.y <= mousePos[1] <= self.y + 112:
+                self.hovered = True
+            else:
+                self.hovered = False
+        else:
+            self.hovered = False
+
+    def checkClicked(self, player):
+        for event in data.events:
+            if self.hovered and event.type == pygame.MOUSEBUTTONDOWN:
+                self.clicked = True
+                if self.type == 'mana':
+                    self.doTask(player)
+            else:
+                self.clicked = False
 
 class RedMana(BaseCard):
     def __init__(self):
@@ -55,3 +81,7 @@ class RedMana(BaseCard):
         self.type = 'mana'
 
         self.face = imageManager.cardRedMana
+
+    def doTask(self, player):
+        player.redMana += 3
+        self.remove = True
