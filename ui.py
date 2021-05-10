@@ -69,3 +69,32 @@ class ManaCounter():
             self.image = self.blueImages[mana]
         elif self.color == 'green':
             self.image = self.greenImages[mana]
+
+class MeditationCounter():
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+        self.pos = (self.x, self.y)
+
+        self.images = [
+        imageHandler.meditationCounterZero,
+        imageHandler.meditationCounterOne,
+        imageHandler.meditationCounterTwo,
+        imageHandler.meditationCounterThree,
+        imageHandler.meditationCounterFour,
+        imageHandler.meditationCounterFive,
+        imageHandler.meditationCounterSix,
+        imageHandler.meditationCounterSeven,
+        imageHandler.meditationCounterEight,
+        imageHandler.meditationCounterNine,
+        imageHandler.meditationCounterTen,
+        ]
+
+        self.image = self.images[0]
+
+    def draw(self, surface):
+        surface.blit(self.image, self.pos)
+
+    def update(self, meditationPoints):
+        self.image = self.images[meditationPoints]

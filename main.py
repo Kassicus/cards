@@ -4,6 +4,7 @@ import pygame
 import imageHandler
 import data
 import playerManager
+import ui
 
 pygame.init()
 
@@ -37,6 +38,8 @@ class Game:
 
     def draw(self):
         self.screen.fill(data.color.BACKGROUND)
+
+        ui.drawBoard(self.screen)
 
         self.playerOne.draw(self.screen)
 
