@@ -3,6 +3,7 @@
 import pygame
 import imageHandler
 import data
+import playerManager
 
 pygame.init()
 
@@ -14,11 +15,13 @@ class Game:
 
         self.screen = pygame.display.set_mode([self.width, self.height])
         pygame.display.set_caption(self.title)
-        pygame.display.set_icon(imageHandler.iconImage)
+        pygame.display.set_icon(imageHandler.icon)
 
         self.running = True
         self.clock = pygame.time.Clock()
         data.events = pygame.event.get()
+
+        self.playerOne = playerManager.PlayerOne()
 
     def start(self):
         while self.running:
@@ -35,7 +38,10 @@ class Game:
     def draw(self):
         self.screen.fill(data.color.BACKGROUND)
 
+        self.playerOne.draw(self.screen)
+
     def update(self):
+        self.playerOne.update()
 
         pygame.display.update()
         self.clock.tick(30)
