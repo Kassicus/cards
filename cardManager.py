@@ -29,12 +29,26 @@ def removeCardFromHand(index, player):
     player.graveyard.append(player.hand[index])
     player.hand.pop(index)
 
-    placeGraveyard(player)
+    reorderGraveyard(player)
 
     reorderHand(player)
 
-def placeGraveyard(player):
+def reorderGraveyard(player):
     for x in range(len(player.graveyard)):
         card = player.graveyard[x]
         card.x = 801
         card.y = 670
+
+def moveCardToBoard(index, player):
+    player.board.append(player.hand[index])
+    player.hand.pop(index)
+
+    reorderBoard(player)
+
+    reorderHand(player)
+
+def reorderBoard(player):
+    for x in range(len(player.board)):
+        card = player.board[x]
+        card.x = int(18 + (x * 90))
+        card.y = 535

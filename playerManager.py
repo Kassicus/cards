@@ -21,8 +21,9 @@ class PlayerOne():
         self.meditationCounter = ui.MeditationCounter(923, 608)
 
         self.deck = [
-        cards.RedMana(),
-        cards.RedMana()
+        cards.GreenMana(),
+        cards.GreenMana(),
+        cards.Turtle()
         ]
 
         self.hand = [
@@ -96,8 +97,11 @@ class PlayerOne():
                 card.update()
                 card.checkClicked(self)
 
-                if card.remove:
+                if card.move == 'graveyard':
                     cardManager.removeCardFromHand(x, self)
+
+                if card.move == 'board':
+                    cardManager.moveCardToBoard(x, self)
             except:
                 pass
 

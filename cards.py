@@ -28,7 +28,7 @@ class BaseCard(object):
         self.faceUp = False
         self.hovered = False
         self.clicked = True
-        self.remove = False
+        self.move = ''
 
         self.image = self.back
 
@@ -60,8 +60,7 @@ class BaseCard(object):
         for event in data.events:
             if self.hovered and event.type == pygame.MOUSEBUTTONDOWN:
                 self.clicked = True
-                if self.type == 'mana':
-                    self.doTask(player)
+                self.doTask(player)
             else:
                 self.clicked = False
 
@@ -83,5 +82,75 @@ class RedMana(BaseCard):
         self.face = imageManager.cardRedMana
 
     def doTask(self, player):
-        player.redMana += 3
-        self.remove = True
+        if player.meditationPoints >= self.cost:
+            player.redMana += 3
+            player.meditationPoints -= 1
+            self.move = 'graveyard'
+
+class BlueMana(BaseCard):
+    def __init__(self):
+        super().__init__()
+
+        self.color = 'blue'
+
+        self.name = 'Blue Mana'
+        self.description = 'Adds 3 Blue Mana'
+
+        self.attack = 0
+        self.defense = 0
+        self.cost = 1
+
+        self.type = 'mana'
+
+        self.face = imageManager.cardBlueMana
+
+    def doTask(self, player):
+        if player.meditationPoints >= self.cost:
+            player.blueMana += 3
+            player.meditationPoints -= 1
+            self.move = 'graveyard'
+
+class GreenMana(BaseCard):
+    def __init__(self):
+        super().__init__()
+
+        self.color = 'green'
+
+        self.name = 'Green Mana'
+        self.description = 'Adds 3 Green Mana'
+
+        self.attack = 0
+        self.defense = 0
+        self.cost = 1
+
+        self.type = 'mana'
+
+        self.face = imageManager.cardGreenMana
+
+    def doTask(self, player):
+        if player.meditationPoints >= self.cost:
+            player.greenMana += 3
+            player.meditationPoints -= 1
+            self.move = 'graveyard'
+
+class Turtle(BaseCard):
+    def __init__(self):
+        super().__init__()
+
+        self.color = 'green'
+
+        self.name = 'Turtle'
+        self.description = 'Beefy Turtle defender boi'
+
+        self.attack = 1
+        self.defense = 4
+        self.cost = 2
+
+        self.type = 'defender'
+
+        self.face = imageManager.cardTurtle
+
+    def doTask(self, player):
+        if player.greenMana >= self.cost:
+            player.greenMana -= self.cost
+            self.move = 'board'

@@ -54,3 +54,7 @@ meditationCounterTen = pygame.transform.scale(pygame.image.load('assets/ui/mc/mc
 
 cardBack = pygame.transform.scale(pygame.image.load('assets/cards/back.png'), (80, 112))
 cardRedMana = pygame.transform.scale(pygame.image.load('assets/cards/red/mana.png'), (80, 112))
+cardBlueMana = pygame.transform.scale(pygame.image.load('assets/cards/blue/mana.png'), (80, 112))
+cardGreenMana = pygame.transform.scale(pygame.image.load('assets/cards/green/mana.png'), (80, 112))
+
+cardTurtle = pygame.transform.scale(pygame.image.load('assets/cards/green/turtle.png'), (80, 112))

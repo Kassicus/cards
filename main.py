@@ -32,6 +32,10 @@ class Game:
                 if event.type == pygame.QUIT:
                     self.running = False
 
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_q:
+                        self.playerOne.meditationPoints += 1
+
             self.draw()
 
             self.update()
