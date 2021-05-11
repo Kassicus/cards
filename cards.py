@@ -28,12 +28,19 @@ class BaseCard(object):
         self.faceUp = False
         self.hovered = False
         self.clicked = True
+        self.selected = False
         self.move = ''
 
         self.image = self.back
 
     def draw(self, surface):
         surface.blit(self.image, self.pos)
+
+        if self.selected:
+            self.drawOutline(surface)
+
+    def drawOutline(self, surface):
+        surface.blit(imageManager.highlightCard, (self.x - 2, self.y - 2))
 
     def update(self):
         self.pos = (self.x, self.y)
@@ -63,6 +70,14 @@ class BaseCard(object):
                 self.doTask(player)
             else:
                 self.clicked = False
+
+    def checkSelected(self):
+        for event in data.events:
+            if self.hovered and event.type == pygame.MOUSEBUTTONDOWN:
+                self.selected = True
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                self.selected = False
+
 
 class RedMana(BaseCard):
     def __init__(self):

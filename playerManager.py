@@ -121,6 +121,8 @@ class PlayerOne():
             try:
                 card = self.defenders[x]
                 card.update()
+
+                card.checkSelected()
             except:
                 pass
 
@@ -128,6 +130,8 @@ class PlayerOne():
             try:
                 card = self.attackers[x]
                 card.update()
+
+                card.checkSelected()
             except:
                 pass
 

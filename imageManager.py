@@ -52,6 +52,8 @@ meditationCounterEight = pygame.transform.scale(pygame.image.load('assets/ui/mc/
 meditationCounterNine = pygame.transform.scale(pygame.image.load('assets/ui/mc/mc_nine.png'), (42, 42))
 meditationCounterTen = pygame.transform.scale(pygame.image.load('assets/ui/mc/mc_ten.png'), (42, 42))
 
+highlightCard = pygame.transform.scale(pygame.image.load('assets/cards/highlight.png'), (84, 116))
+
 cardBack = pygame.transform.scale(pygame.image.load('assets/cards/back.png'), (80, 112))
 cardRedMana = pygame.transform.scale(pygame.image.load('assets/cards/red/mana.png'), (80, 112))
 cardBlueMana = pygame.transform.scale(pygame.image.load('assets/cards/blue/mana.png'), (80, 112))
