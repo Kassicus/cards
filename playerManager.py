@@ -22,15 +22,20 @@ class PlayerOne():
 
         self.deck = [
         cards.GreenMana(),
-        cards.GreenMana(),
-        cards.Turtle()
+        cards.RedMana(),
+        cards.Turtle(),
+        cards.Souls()
         ]
 
         self.hand = [
 
         ]
 
-        self.board = [
+        self.defenders = [
+
+        ]
+
+        self.attackers = [
 
         ]
 
@@ -68,8 +73,12 @@ class PlayerOne():
             card = self.hand[x]
             card.draw(surface)
 
-        for x in range(len(self.board)):
-            card = self.board[x]
+        for x in range(len(self.defenders)):
+            card = self.defenders[x]
+            card.draw(surface)
+
+        for x in range(len(self.attackers)):
+            card = self.attackers[x]
             card.draw(surface)
 
         for x in range(len(self.graveyard)):
@@ -100,14 +109,24 @@ class PlayerOne():
                 if card.move == 'graveyard':
                     cardManager.removeCardFromHand(x, self)
 
-                if card.move == 'board':
-                    cardManager.moveCardToBoard(x, self)
+                if card.move == 'defenders':
+                    cardManager.moveCardToDefenders(x, self)
+
+                if card.move == 'attackers':
+                    cardManager.moveCardToAttackers(x, self)
             except:
                 pass
 
-        for x in range(len(self.board)):
+        for x in range(len(self.defenders)):
             try:
-                card = self.board[x]
+                card = self.defenders[x]
+                card.update()
+            except:
+                pass
+
+        for x in range(len(self.attackers)):
+            try:
+                card = self.attackers[x]
                 card.update()
             except:
                 pass

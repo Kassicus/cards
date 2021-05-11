@@ -153,4 +153,27 @@ class Turtle(BaseCard):
     def doTask(self, player):
         if player.greenMana >= self.cost:
             player.greenMana -= self.cost
-            self.move = 'board'
+            self.move = 'defenders'
+
+
+class Souls(BaseCard):
+    def __init__(self):
+        super().__init__()
+
+        self.color = 'red'
+
+        self.name = 'Souls'
+        self.description = 'Soul Sand?'
+
+        self.attack = 2
+        self.defense = 1
+        self.cost = 1
+
+        self.type = 'attacker'
+
+        self.face = imageManager.cardSouls
+
+    def doTask(self, player):
+        if player.redMana >= self.cost:
+            player.redMana -= self.cost
+            self.move = 'attackers'

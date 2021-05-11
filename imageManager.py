@@ -58,3 +58,4 @@ cardBlueMana = pygame.transform.scale(pygame.image.load('assets/cards/blue/mana.
 cardGreenMana = pygame.transform.scale(pygame.image.load('assets/cards/green/mana.png'), (80, 112))
 
 cardTurtle = pygame.transform.scale(pygame.image.load('assets/cards/green/turtle.png'), (80, 112))
+cardSouls = pygame.transform.scale(pygame.image.load('assets/cards/red/souls.png'), (80, 112))

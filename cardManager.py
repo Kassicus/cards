@@ -39,16 +39,30 @@ def reorderGraveyard(player):
         card.x = 801
         card.y = 670
 
-def moveCardToBoard(index, player):
-    player.board.append(player.hand[index])
+def moveCardToAttackers(index, player):
+    player.attackers.append(player.hand[index])
     player.hand.pop(index)
 
-    reorderBoard(player)
+    reorderAttackers(player)
 
     reorderHand(player)
 
-def reorderBoard(player):
-    for x in range(len(player.board)):
-        card = player.board[x]
+def reorderAttackers(player):
+    for x in range(len(player.attackers)):
+        card = player.attackers[x]
+        card.x = int(18 + (x * 90))
+        card.y = 412
+
+def moveCardToDefenders(index, player):
+    player.defenders.append(player.hand[index])
+    player.hand.pop(index)
+
+    reorderDefenders(player)
+
+    reorderHand(player)
+
+def reorderDefenders(player):
+    for x in range(len(player.defenders)):
+        card = player.defenders[x]
         card.x = int(18 + (x * 90))
         card.y = 535
