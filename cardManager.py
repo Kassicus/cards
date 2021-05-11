@@ -6,8 +6,8 @@ import random
 def placeDeck(player):
     for x in range(len(player.deck)):
         card = player.deck[x]
-        card.x = 18
-        card.y = 670
+        card.x = player.deckpos[0]
+        card.y = player.deckpos[1]
 
 def drawCard(player):
     if len(player.deck) > 0:
@@ -19,8 +19,8 @@ def drawCard(player):
 def reorderHand(player):
     for x in range(len(player.hand)):
         card = player.hand[x]
-        card.x = int(120 + (x * 90))
-        card.y = 670
+        card.x = int(player.handpos[0] + (x * 90))
+        card.y = player.handpos[1]
         card.faceUp = True
 
 def shuffleDeck(player):
@@ -39,8 +39,8 @@ def removeCardFromLibrary(lib, index, player):
 def reorderGraveyard(player):
     for x in range(len(player.graveyard)):
         card = player.graveyard[x]
-        card.x = 801
-        card.y = 670
+        card.x = player.graveyardpos[0]
+        card.y = player.graveyardpos[1]
 
 def moveCardToAttackers(index, player):
     player.attackers.append(player.hand[index])
@@ -53,8 +53,8 @@ def moveCardToAttackers(index, player):
 def reorderAttackers(player):
     for x in range(len(player.attackers)):
         card = player.attackers[x]
-        card.x = int(18 + (x * 90))
-        card.y = 412
+        card.x = int(player.attackerspos[0] + (x * 90))
+        card.y = player.attackerspos[1]
 
 def moveCardToDefenders(index, player):
     player.defenders.append(player.hand[index])
@@ -67,11 +67,12 @@ def moveCardToDefenders(index, player):
 def reorderDefenders(player):
     for x in range(len(player.defenders)):
         card = player.defenders[x]
-        card.x = int(18 + (x * 90))
-        card.y = 535
+        card.x = int(player.defenderspos[0] + (x * 90))
+        card.y = player.defenderspos[1]
 
 def bounceCardToHand(lib, index, player):
     lib[index].selected = False
+    lib[index].tapped = False
     player.hand.append(lib[index])
     lib.pop(index)
 

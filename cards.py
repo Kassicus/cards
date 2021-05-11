@@ -193,6 +193,27 @@ class Turtle(BaseCard):
             player.greenMana -= self.cost
             self.move = 'defenders'
 
+class SeaWall(BaseCard):
+    def __init__(self):
+        super().__init__()
+
+        self.color = 'green'
+
+        self.name = 'Sea Wall'
+        self.description = 'An old stone wall on the shore'
+
+        self.attack = 0
+        self.defense = 3
+        self.cost = 1
+
+        self.type = 'defender'
+
+        self.face = imageManager.cardSeaWall
+
+    def doTask(self, player):
+        if player.greenMana >= self.cost:
+            player.greenMana -= self.cost
+            self.move = 'defenders'
 
 class Souls(BaseCard):
     def __init__(self):

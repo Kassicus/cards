@@ -25,24 +25,22 @@ class PlayerOne():
         cards.RedMana(),
         cards.GreenMana(),
         cards.Turtle(),
-        cards.Souls()
+        cards.Souls(),
+        cards.SeaWall()
         ]
+        self.deckpos = (18, 670)
 
-        self.hand = [
+        self.hand = []
+        self.handpos = (120, 670)
 
-        ]
+        self.defenders = []
+        self.defenderspos = (18, 535)
 
-        self.defenders = [
+        self.attackers = []
+        self.attackerspos = (18, 412)
 
-        ]
-
-        self.attackers = [
-
-        ]
-
-        self.graveyard = [
-
-        ]
+        self.graveyard = []
+        self.graveyardpos = (801, 670)
 
         cardManager.placeDeck(self)
         cardManager.shuffleDeck(self)
