@@ -30,17 +30,24 @@ class BaseCard(object):
         self.clicked = True
         self.selected = False
         self.move = ''
+        self.tapped = False
 
         self.image = self.back
 
     def draw(self, surface):
-        surface.blit(self.image, self.pos)
+        if self.tapped:
+            surface.blit(pygame.transform.rotate(self.image, 90), self.pos)
+        else:
+            surface.blit(self.image, self.pos)
 
         if self.selected:
             self.drawOutline(surface)
 
     def drawOutline(self, surface):
-        surface.blit(imageManager.highlightCard, (self.x - 2, self.y - 2))
+        if self.tapped:
+            surface.blit(pygame.transform.rotate(imageManager.highlightCard, 90), (self.x - 2, self.y - 2))
+        else:
+            surface.blit(imageManager.highlightCard, (self.x - 2, self.y - 2))
 
     def update(self):
         self.pos = (self.x, self.y)
@@ -51,6 +58,9 @@ class BaseCard(object):
             self.image = self.back
 
         self.checkHovered()
+
+        if self.selected:
+            self.checkInput()
 
     def checkHovered(self):
         mousePos = pygame.mouse.get_pos()
@@ -78,6 +88,17 @@ class BaseCard(object):
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 self.selected = False
 
+    def checkInput(self):
+        for event in data.events:
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_k:
+                    self.selected = False
+                    self.move = 'graveyard'
+                if event.key == pygame.K_t:
+                    if self.tapped:
+                        self.tapped = False
+                    else:
+                        self.tapped = True
 
 class RedMana(BaseCard):
     def __init__(self):

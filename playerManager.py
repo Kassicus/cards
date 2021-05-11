@@ -12,7 +12,7 @@ class PlayerOne():
         self.blueMana = 0
         self.greenMana = 0
 
-        self.meditationPoints = 1
+        self.meditationPoints = 3
 
         self.redManaCounter = ui.ManaCounter(903, 508, 'red')
         self.blueManaCounter = ui.ManaCounter(948, 508, 'blue')
@@ -22,8 +22,11 @@ class PlayerOne():
 
         self.deck = [
         cards.GreenMana(),
+        cards.GreenMana(),
         cards.RedMana(),
         cards.Turtle(),
+        cards.Turtle(),
+        cards.Souls(),
         cards.Souls()
         ]
 
@@ -107,7 +110,7 @@ class PlayerOne():
                 card.checkClicked(self)
 
                 if card.move == 'graveyard':
-                    cardManager.removeCardFromHand(x, self)
+                    cardManager.removeCardFromLibrary(self.hand, x, self)
 
                 if card.move == 'defenders':
                     cardManager.moveCardToDefenders(x, self)
@@ -121,8 +124,10 @@ class PlayerOne():
             try:
                 card = self.defenders[x]
                 card.update()
-
                 card.checkSelected()
+
+                if card.move == 'graveyard':
+                    cardManager.removeCardFromLibrary(self.defenders, x, self)
             except:
                 pass
 
@@ -130,8 +135,10 @@ class PlayerOne():
             try:
                 card = self.attackers[x]
                 card.update()
-
                 card.checkSelected()
+
+                if card.move == 'graveyard':
+                    cardManager.removeCardFromLibrary(self.attackers, x, self)
             except:
                 pass
 

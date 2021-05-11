@@ -25,13 +25,15 @@ def reorderHand(player):
 def shuffleDeck(player):
     random.shuffle(player.deck)
 
-def removeCardFromHand(index, player):
-    player.graveyard.append(player.hand[index])
-    player.hand.pop(index)
+def removeCardFromLibrary(lib, index, player):
+    player.graveyard.append(lib[index])
+    lib.pop(index)
 
     reorderGraveyard(player)
 
     reorderHand(player)
+    reorderAttackers(player)
+    reorderDefenders(player)
 
 def reorderGraveyard(player):
     for x in range(len(player.graveyard)):
