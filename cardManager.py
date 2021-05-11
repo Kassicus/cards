@@ -20,6 +20,7 @@ def reorderHand(player):
     for x in range(len(player.hand)):
         card = player.hand[x]
         card.x = int(120 + (x * 90))
+        card.y = 670
         card.faceUp = True
 
 def shuffleDeck(player):
@@ -68,3 +69,12 @@ def reorderDefenders(player):
         card = player.defenders[x]
         card.x = int(18 + (x * 90))
         card.y = 535
+
+def bounceCardToHand(lib, index, player):
+    lib[index].selected = False
+    player.hand.append(lib[index])
+    lib.pop(index)
+
+    reorderAttackers(player)
+    reorderDefenders(player)
+    reorderHand(player)

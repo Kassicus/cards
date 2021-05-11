@@ -99,6 +99,8 @@ class BaseCard(object):
                         self.tapped = False
                     else:
                         self.tapped = True
+                if event.key == pygame.K_b:
+                    self.move = 'hand'
 
 class RedMana(BaseCard):
     def __init__(self):

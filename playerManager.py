@@ -21,12 +21,10 @@ class PlayerOne():
         self.meditationCounter = ui.MeditationCounter(923, 608)
 
         self.deck = [
-        cards.GreenMana(),
-        cards.GreenMana(),
+        cards.BlueMana(),
         cards.RedMana(),
+        cards.GreenMana(),
         cards.Turtle(),
-        cards.Turtle(),
-        cards.Souls(),
         cards.Souls()
         ]
 
@@ -47,6 +45,7 @@ class PlayerOne():
         ]
 
         cardManager.placeDeck(self)
+        cardManager.shuffleDeck(self)
 
     def draw(self, surface):
         self.drawCounters(surface)
@@ -126,6 +125,9 @@ class PlayerOne():
                 card.update()
                 card.checkSelected()
 
+                if card.move == 'hand':
+                    cardManager.bounceCardToHand(self.defenders, x, self)
+
                 if card.move == 'graveyard':
                     cardManager.removeCardFromLibrary(self.defenders, x, self)
             except:
@@ -136,6 +138,9 @@ class PlayerOne():
                 card = self.attackers[x]
                 card.update()
                 card.checkSelected()
+
+                if card.move == 'hand':
+                    cardManager.bounceCardToHand(self.attackers, x, self)
 
                 if card.move == 'graveyard':
                     cardManager.removeCardFromLibrary(self.attackers, x, self)
