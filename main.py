@@ -5,7 +5,7 @@ import imageManager
 import data
 import playerManager
 import ui
-import gameStateManager
+import cardManager
 
 pygame.init()
 
@@ -37,6 +37,12 @@ class Game:
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_q:
                         self.playerOne.meditationPoints += 1
+
+                    if event.key == pygame.K_SPACE:
+                        cardManager.drawCard(self.playerOne)
+
+                    if event.key == pygame.K_RETURN:
+                        cardManager.drawCard(self.playerTwo)
 
             self.draw()
 
