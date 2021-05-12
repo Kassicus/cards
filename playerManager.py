@@ -53,8 +53,6 @@ class PlayerOne():
 
         self.updateCards()
 
-        self.testDraw()
-
     def drawCounters(self, surface):
         self.redManaCounter.draw(surface)
         self.blueManaCounter.draw(surface)
@@ -150,11 +148,6 @@ class PlayerOne():
             except:
                 pass
 
-    def testDraw(self):
-        for event in data.events:
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_SPACE:
-                    cardManager.drawCard(self)
 
 class PlayerTwo():
     def __init__(self):
@@ -203,8 +196,6 @@ class PlayerTwo():
 
         self.updateCards()
 
-        self.testDraw()
-
     def drawCounters(self, surface):
         self.redManaCounter.draw(surface)
         self.blueManaCounter.draw(surface)
@@ -299,9 +290,3 @@ class PlayerTwo():
                 card.update()
             except:
                 pass
-
-    def testDraw(self):
-        for event in data.events:
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_SPACE:
-                    cardManager.drawCard(self)

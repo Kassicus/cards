@@ -5,6 +5,7 @@ import imageManager
 import data
 import playerManager
 import ui
+import gameStateManager
 
 pygame.init()
 
