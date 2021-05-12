@@ -39,6 +39,7 @@ def removeCardFromLibrary(lib, index, player):
 def reorderGraveyard(player):
     for x in range(len(player.graveyard)):
         card = player.graveyard[x]
+        card.tapped = False
         card.x = player.graveyardpos[0]
         card.y = player.graveyardpos[1]
 

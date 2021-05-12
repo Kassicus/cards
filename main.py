@@ -23,6 +23,7 @@ class Game:
         data.events = pygame.event.get()
 
         self.playerOne = playerManager.PlayerOne()
+        self.playerTwo = playerManager.PlayerTwo()
 
     def start(self):
         while self.running:
@@ -46,9 +47,11 @@ class Game:
         ui.drawBoard(self.screen)
 
         self.playerOne.draw(self.screen)
+        self.playerTwo.draw(self.screen)
 
     def update(self):
         self.playerOne.update()
+        self.playerTwo.update()
 
         pygame.display.update()
         self.clock.tick(30)
