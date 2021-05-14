@@ -22,6 +22,7 @@ class PlayerOne():
 
         self.deck = [
         cards.RedMana(),
+        cards.BlueMana(),
         cards.GreenMana(),
         cards.Turtle(),
         cards.Souls()
@@ -164,10 +165,11 @@ class PlayerTwo():
         self.meditationCounter = ui.MeditationCounter(33, 348)
 
         self.deck = [
-        cards.RedMana(),
-        cards.GreenMana(),
-        cards.Turtle(),
-        cards.Souls()
+        cards.BlueMana(),
+        cards.BlueMana(),
+        cards.BlueMana(),
+        cards.BlueMana(),
+        cards.BlueMana()
         ]
         self.deckpos = (902, 18)
 

@@ -9,6 +9,14 @@ def placeDeck(player):
         card.x = player.deckpos[0]
         card.y = player.deckpos[1]
 
+def drawHand(player):
+    for x in range(5):
+        if len(player.deck) > 0:
+            player.hand.append(player.deck[0])
+            player.deck.pop()
+
+            reorderHand(player)
+
 def drawCard(player):
     if len(player.deck) > 0:
         player.hand.append(player.deck[0])

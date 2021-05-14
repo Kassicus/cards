@@ -27,6 +27,10 @@ class Game:
         self.playerTwo = playerManager.PlayerTwo()
 
     def start(self):
+        for x in range(5):
+            cardManager.drawCard(self.playerOne)
+            cardManager.drawCard(self.playerTwo)
+
         while self.running:
             data.events = pygame.event.get()
 
@@ -37,9 +41,6 @@ class Game:
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_q:
                         self.playerOne.meditationPoints += 1
-
-                    if event.key == pygame.K_SPACE:
-                        cardManager.drawCard(self.playerOne)
 
                     if event.key == pygame.K_RETURN:
                         cardManager.drawCard(self.playerTwo)
